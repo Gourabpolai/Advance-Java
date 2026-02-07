@@ -1,0 +1,42 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class show {
+    private static final String url =
+            "jdbc:mysql://localhost:3306/Forjdbc";
+    private static final String username = "root";
+    private static final String password = "roni0987";
+
+    public static void main(String[] args) {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(url, username, password);
+            Statement st = connection.createStatement();
+
+
+
+
+            String selectQuery = "SELECT * FROM Learner ";
+            ResultSet resultSet = st.executeQuery(selectQuery);
+
+            while (resultSet.next()) {
+                System.out.println("id: " + resultSet.getInt("id"));
+                System.out.println("name: " + resultSet.getString("name"));
+                System.out.println("age: " + resultSet.getInt("age"));
+                System.out.println("salary: " + resultSet.getDouble("salary"));
+                System.out.println("----------------------");
+            }
+
+            resultSet.close();
+            st.close();
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}

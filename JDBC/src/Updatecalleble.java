@@ -1,0 +1,28 @@
+import java.sql.*;
+
+public class Updatecalleble {
+    public static void main(String[] args) {
+
+        String url = "jdbc:mysql://localhost:3306/Student";
+        String user = "root";
+        String pass = "roni0987";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, pass);
+
+            CallableStatement cs =
+                    con.prepareCall("{call updateStudentAge(?,?)}");
+
+            cs.setInt(1, 101);
+            cs.setInt(2, 22);
+
+            cs.execute();
+            System.out.println("Record Updated");
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
