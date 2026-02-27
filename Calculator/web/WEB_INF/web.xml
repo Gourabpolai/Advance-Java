@@ -1,0 +1,15 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+
+         version="4.0">
+
+    <servlet>
+        <servlet-name>Calculator</servlet-name>
+        <servlet-class>com.calculator.CalculatorServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Calculator</servlet-name>
+        <url-pattern>/CalculatorServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
